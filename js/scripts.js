@@ -1,64 +1,36 @@
-var Name = "Not known";
-        if (navigator.appVersion.indexOf("Win") != -1) Name =
-          "Windows OS";
-        if (navigator.appVersion.indexOf("Mac") != -1) Name =
-          "MacOS";
-        if (navigator.appVersion.indexOf("X11") != -1) Name =
-          "UNIX OS";
-        if (navigator.appVersion.indexOf("Linux") != -1) Name =
-          "Linux OS";
-
-document.getElementById("details").textContent = Name + " | " + navigator.appVersion;
-
-
-
 const details = navigator.userAgent;
-
-// Creating a regular expression containing some mobile devices keywords
-// to search it in details string
 const regexp = /android|iphone|kindle|ipad/i;
-
-// Using test() method to search regexp in details it returns boolean value
 const isMobileDevice = regexp.test(details);
 
+let keyCombination = "Win + Shift + Enter";
+if (navigator.appVersion.indexOf("Mac") != -1) keyCombination = "Cmd + Shift + Enter";
+document.querySelector(".command").textContent = keyCombination;
+
 if (isMobileDevice) {
-    document.getElementById("device").textContent = "You are using a Mobile Device";
-    document.getElementById("message").textContent = "Please double click to make the webpage full screen";
-} else {
-    document.getElementById("device").textContent = "You are using Desktop";
-    document.getElementById("message").textContent = "Please press meta + shift + enter keys together.";
-}
+    document.getElementById("instruction").textContent = "instructions for mobile";
+    document.querySelector(".bar").classList.add("hide");
+    document.querySelector(".alt-way").classList.add("hide");
+    document.querySelector(".command").classList.add("hide");
 
-window.addEventListener("dblclick", function(event) {
-  document.getElementById("message").textContent = "You double clicked. Please double-click again to exit fullscreen";
-  // DOM element which needs to enter fullscreen mode
-  var element = document.querySelector("#play-block");
-
-  element.requestFullscreen()
-  .then(function() {
-  	document.getElementById("full-screen").textContent = "Element has entered fullscreen mode successfully"
-  })
-  .catch(function(error) {
-  	// element could not enter fullscreen mode
-  	// error message
-  	console.log(error.message);
-  });
-}, false);
-
-document.onkeydown = function (e) {
-  if(e.keyCode == 13 && e.metaKey && e.shiftKey) {
-    document.getElementById("message").textContent = "You pressed meta + shift + enter. Please press it again to exit fullscreen";
-    // DOM element which needs to enter fullscreen mode
-    var element = document.querySelector("#play-block");
-
-    element.requestFullscreen()
-    .then(function() {
-    	document.getElementById("full-screen").textContent = "Element has entered fullscreen mode successfully"
-    })
-    .catch(function(error) {
-    	// element could not enter fullscreen mode
-    	// error message
-    	console.log(error.message);
+    document.querySelector(".btn").addEventListener("click", function(event) {
+      window.location.href = "play-mob.html";
     });
-  }
+
+    window.addEventListener("dblclick", function(event) {
+      window.location.href = "play-mob.html";
+    }, false);
+
+} else {
+    document.getElementById("instruction").textContent = "instructions for desktop";
+
+    document.querySelector(".btn").addEventListener("click", function(event) {
+      window.location.href = "play-desk.html";
+    });
+
+    document.onkeydown = function (e) {
+      if(e.keyCode == 13 && e.metaKey && e.shiftKey) {
+      window.location.href = "play-desk.html";
+      }
+    };
+
 }

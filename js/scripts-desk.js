@@ -1,6 +1,8 @@
 let keyCombination = "Windows + Shift + Enter";
 if (navigator.appVersion.indexOf("Mac") != -1) keyCombination = "Cmd + Shift + Enter";
-document.getElementById("command").textContent = keyCombination;
+
+document.getElementById("message").innerHTML = "Press <span id='command'>" + keyCombination + "</span> again";
+
 
 document.onkeydown = function (e) {
   if(e.keyCode == 13 && e.metaKey && e.shiftKey) {
@@ -10,8 +12,8 @@ document.onkeydown = function (e) {
 
     element.requestFullscreen()
     .then(function() {
-      document.getElementById("message-box").classList.add("hide");
-      document.getElementById("top-message").innerHTML = "Press any key to play" + "<br>" + "Press " + keyCombination + " to exit";
+      document.getElementById("message").classList.add("move-up");
+      document.getElementById("message").textContent = "Press any key to play | Press " + keyCombination + " to exit";
     })
     .catch(function(error) {
     	// element could not enter fullscreen mode

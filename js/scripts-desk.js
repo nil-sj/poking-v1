@@ -18,7 +18,10 @@ document.onkeydown = function (e) {
       document.querySelectorAll(".img-block").forEach((img) => {
           img.addEventListener("click", (event) => {
             const current = event.target.id;
-            console.log(current);
+            //console.log(current);
+            const currentAudioFile = "audio/" + current + ".mp3";
+            const currentAudio = new Audio(currentAudioFile);
+            currentAudio.play();
 
             document.querySelectorAll(".img-block").forEach((div) => {
               if(div.id == current) {

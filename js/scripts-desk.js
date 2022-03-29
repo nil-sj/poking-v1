@@ -7,7 +7,6 @@ document.getElementById("message").innerHTML = "Press <span id='command'>" + key
 document.onkeydown = function (e) {
   if(e.keyCode == 13 && e.metaKey && e.shiftKey) {
 
-    // DOM element which needs to enter fullscreen mode
     var element = document.querySelector("#play-block");
 
     element.requestFullscreen()
@@ -15,6 +14,7 @@ document.onkeydown = function (e) {
       document.getElementById("message").classList.add("move-up");
       document.getElementById("message").textContent = "Press any key to play | Press " + keyCombination + " to exit";
 
+      //modify this block for keyboard entry
       document.querySelectorAll(".img-block").forEach((img) => {
           img.addEventListener("click", (event) => {
             const current = event.target.id;
@@ -32,6 +32,7 @@ document.onkeydown = function (e) {
 
           });
       });
+      //end of modification
 
       document.onkeydown = function (ev) {
         if(ev.keyCode == 13 && ev.metaKey && ev.shiftKey) {

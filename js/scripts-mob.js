@@ -2,7 +2,6 @@ document.getElementById("message").textContent = "Please double click to start";
 
 document.addEventListener("dblclick", function(event) {
 
-  // DOM element which needs to enter fullscreen mode
   var element = document.querySelector("#play-block");
 
   element.requestFullscreen()
@@ -12,7 +11,10 @@ document.addEventListener("dblclick", function(event) {
     document.querySelectorAll(".img-block").forEach((img) => {
         img.addEventListener("click", (event) => {
           const current = event.target.id;
-          console.log(current);
+          //console.log(current);
+          const currentAudioFile = "audio/" + current + ".mp3";
+          const currentAudio = new Audio(currentAudioFile);
+          currentAudio.play(); 
 
           document.querySelectorAll(".img-block").forEach((div) => {
             if(div.id == current) {

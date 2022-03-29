@@ -81,3 +81,19 @@ div#start {
 .hide {
   display: none;
 }
+
+.footer {
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: #A0A0A0;
+  margin-top: 3rem;
+}
+
+.footer > a {
+  color: #A0A0A0;
+  text-decoration: none;
+}
+
+.footer > a:hover {
+  color: #404040;
+}

@@ -2,6 +2,8 @@ const charArray = [ "yoyo", "coco", "jj", "tomtom", "ele", "teddy", "piggy", "mo
 
 document.getElementById("message").textContent = "Please double click to start";
 
+let prev = "";
+
 document.addEventListener("dblclick", function(event) {
 
   var element = document.querySelector("#play-block");
@@ -10,13 +12,15 @@ document.addEventListener("dblclick", function(event) {
   .then(function() {
     document.getElementById("message").classList.add("move-up");
     document.getElementById("message").textContent = "Click anywhere to play | Double-click to exit";
-    let prev = "";
     document.querySelectorAll(".img-block").forEach((img) => {
         img.addEventListener("click", (event) => {
           let current = event.target.id;
+          if (current == "") {
+              current = event.target.parentElement.id;
+          }
           if(current == prev) {
             //pick a random current
-            let current = charArray[Math.floor(Math.random() * charArray.length)];
+            current = charArray[Math.floor(Math.random() * charArray.length)];
           }
           //console.log(current);
           const currentAudioFile = "audio/" + current + ".mp3";

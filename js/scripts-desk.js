@@ -6,6 +6,8 @@ if (navigator.appVersion.indexOf("Mac") != -1) keyCombination = "Cmd + Shift + E
 document.getElementById("message").innerHTML = "Press <span id='command'>" + keyCombination + "</span> again";
 
 
+let prev = "";
+
 document.onkeydown = function (e) {
   if(e.keyCode == 13 && e.metaKey && e.shiftKey) {
 
@@ -19,7 +21,14 @@ document.onkeydown = function (e) {
       //modify this block for keyboard entry
       document.querySelectorAll(".img-block").forEach((img) => {
           img.addEventListener("click", (event) => {
-            const current = event.target.id;
+            let current = event.target.id;
+            if (current == "") {
+                current = event.target.parentElement.id;
+            }
+            if(current == prev) {
+              //pick a random current
+              current = charArray[Math.floor(Math.random() * charArray.length)];
+            }
             //console.log(current);
             const currentAudioFile = "audio/" + current + ".mp3";
             const currentAudio = new Audio(currentAudioFile);

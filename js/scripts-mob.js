@@ -1,3 +1,5 @@
+const charArray = [ "yoyo", "coco", "jj", "tomtom", "ele", "teddy", "piggy", "monkey", "ducky", "bingo", "cody", "nina", "cece", "nico", "bella"];
+
 document.getElementById("message").textContent = "Please double click to start";
 
 document.addEventListener("dblclick", function(event) {
@@ -8,13 +10,18 @@ document.addEventListener("dblclick", function(event) {
   .then(function() {
     document.getElementById("message").classList.add("move-up");
     document.getElementById("message").textContent = "Click anywhere to play | Double-click to exit";
+    let prev = "";
     document.querySelectorAll(".img-block").forEach((img) => {
         img.addEventListener("click", (event) => {
-          const current = event.target.id;
+          let current = event.target.id;
+          if(current == prev) {
+            //pick a random current
+            let current = charArray[Math.floor(Math.random() * charArray.length)];
+          }
           //console.log(current);
           const currentAudioFile = "audio/" + current + ".mp3";
           const currentAudio = new Audio(currentAudioFile);
-          currentAudio.play(); 
+          currentAudio.play();
 
           document.querySelectorAll(".img-block").forEach((div) => {
             if(div.id == current) {
@@ -25,6 +32,8 @@ document.addEventListener("dblclick", function(event) {
               }
             }
           });
+
+          prev = current;
 
         });
     });

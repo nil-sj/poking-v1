@@ -1,3 +1,5 @@
+const charArray = [ "yoyo", "coco", "jj", "tomtom", "ele", "teddy", "piggy", "monkey", "ducky", "bingo", "cody", "nina", "cece", "nico", "bella", "mousy"];
+
 let keyCombination = "Windows + Shift + Enter";
 if (navigator.appVersion.indexOf("Mac") != -1) keyCombination = "Cmd + Shift + Enter";
 

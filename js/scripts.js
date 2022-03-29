@@ -7,7 +7,7 @@ if (navigator.appVersion.indexOf("Mac") != -1) keyCombination = "Cmd + Shift + E
 document.querySelector(".command").textContent = keyCombination;
 
 if (isMobileDevice) {
-    document.getElementById("instruction").textContent = "instructions for mobile";
+    document.getElementById("instruction").textContent = "Let your kiddo click on screen to discover special Cocomelon characters.";
     document.querySelector(".bar").classList.add("hide");
     document.querySelector(".alt-way").classList.add("hide");
     document.querySelector(".command").classList.add("hide");
@@ -21,7 +21,7 @@ if (isMobileDevice) {
     }, false);
 
 } else {
-    document.getElementById("instruction").textContent = "instructions for desktop";
+    document.getElementById("instruction").textContent = "Let your kiddo press a random key on your keyboard and disover a special Cocomelon character. You can press " + keyCombination + " to get into or exit out of the fullscreen mode.";
 
     document.querySelector(".btn").addEventListener("click", function(event) {
       window.location.href = "play-desk.html";

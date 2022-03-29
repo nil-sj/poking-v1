@@ -8,7 +8,8 @@ var Name = "Not known";
         if (navigator.appVersion.indexOf("Linux") != -1) Name =
           "Linux OS";
 
-document.getElementById("details").textContent = Name;
+document.getElementById("details").textContent = Name + " | " + navigator.appVersion;
+
 
 
 const details = navigator.userAgent;

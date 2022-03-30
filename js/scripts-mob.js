@@ -11,7 +11,7 @@ document.addEventListener("dblclick", function(event) {
   element.requestFullscreen()
   .then(function() {
     document.getElementById("message").classList.add("move-up");
-    document.getElementById("message").textContent = "Click anywhere to play | Double-click to exit";
+    document.getElementById("message").textContent = "Click anywhere to play | Swipe left to exit";
     document.querySelectorAll(".img-block").forEach((img) => {
         img.addEventListener("click", (event) => {
           let current = event.target.id;
@@ -41,15 +41,38 @@ document.addEventListener("dblclick", function(event) {
 
         });
     });
-    document.addEventListener("dblclick", function(ev) {
-      document.exitFullscreen()
-      .then(function() {
-      	window.location.href = "index.html";
-      })
-      .catch(function(error) {
-      	console.log(error.message);
-      });
-    });
+
+    let touchstartX = 0
+    let touchendX = 0
+
+    const slider = document.getElementById('play-block')
+
+    function handleGesture() {
+      if (touchendX < touchstartX) {
+        document.exitFullscreen()
+        .then(function() {
+        	window.location.href = "index.html";
+        })
+        .catch(function(error) {
+        	console.log(error.message);
+        });
+      }
+      if (touchendX > touchstartX) {
+        let nonoAudio = new Audio("audio/nono.mp3");
+        nonoAudio.play();
+      }
+
+    }
+
+    slider.addEventListener('touchstart', evnt => {
+      touchstartX = evnt.changedTouches[0].screenX
+    })
+
+    slider.addEventListener('touchend', evnt => {
+      touchendX = evnt.changedTouches[0].screenX
+      handleGesture()
+    })
+
   })
   .catch(function(error) {
   	// element could not enter fullscreen mode

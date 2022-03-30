@@ -21,7 +21,7 @@ document.onkeydown = function (e) {
         if((ev.keyCode == 13 && ev.ctrlKey && ev.shiftKey) || (ev.keyCode == 27)) {
           document.exitFullscreen()
           .then(function() {
-            window.location.href = "index.html";
+            document.location.href = "index.html";
           })
           .catch(function(error) {
             console.log(error.message);

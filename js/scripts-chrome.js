@@ -1,15 +1,13 @@
 const charArray = [ "yoyo", "coco", "jj", "tomtom", "ele", "teddy", "piggy", "monkey", "ducky", "bingo", "cody", "nina", "cece", "nico", "bella", "mousy"];
 
-let keyCombination = "Windows + Shift + Enter";
-if (navigator.appVersion.indexOf("Mac") != -1) keyCombination = "Cmd + Shift + Enter";
+let keyCombination = "Ctrl + Shift + Enter";
 
 document.getElementById("message").innerHTML = "Press <span id='command'>" + keyCombination + "</span> again";
-
 
 let prev = "";
 
 document.onkeydown = function (e) {
-  if(e.keyCode == 13 && e.metaKey && e.shiftKey) {
+  if(e.keyCode == 13 && e.ctrlKey && e.shiftKey) {
 
     var element = document.querySelector("#play-block");
 
@@ -20,7 +18,7 @@ document.onkeydown = function (e) {
 
       document.onkeydown = function (ev) {
         let current = "nono";
-        if((ev.keyCode == 13 && ev.metaKey && ev.shiftKey) || (ev.keyCode == 27)) {
+        if((ev.keyCode == 13 && ev.ctrlKey && ev.shiftKey) || (ev.keyCode == 27)) {
           document.exitFullscreen()
           .then(function() {
             window.location.href = "index.html";

@@ -58,7 +58,7 @@ document.addEventListener("dblclick", function(event) {
         });
       }
       if (touchendX - touchstartX > 100) {
-        let nonoAudio = new Audio("audio/nono.mp3");
+        let nonoAudio = new Audio("audio/swipe-left.mp3");
         nonoAudio.play();
       }
 
@@ -72,6 +72,12 @@ document.addEventListener("dblclick", function(event) {
       touchendX = evnt.changedTouches[0].screenX
       handleGesture()
     })
+
+    document.addEventListener("dblclick", function(ev) {
+      const nodoubleAudio = new Audio("audio/nodouble.mp3");
+      nodoubleAudio.play();
+      prev = "";
+    });
 
   })
   .catch(function(error) {

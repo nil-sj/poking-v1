@@ -48,7 +48,7 @@ document.addEventListener("dblclick", function(event) {
     const slider = document.getElementById('play-block')
 
     function handleGesture() {
-      if (touchendX < touchstartX) {
+      if (touchstartX - touchendX > 100) {
         document.exitFullscreen()
         .then(function() {
         	window.location.href = "index.html";
@@ -57,7 +57,7 @@ document.addEventListener("dblclick", function(event) {
         	console.log(error.message);
         });
       }
-      if (touchendX > touchstartX) {
+      if (touchendX - touchstartX > 100) {
         let nonoAudio = new Audio("audio/nono.mp3");
         nonoAudio.play();
       }
